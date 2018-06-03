@@ -1,11 +1,30 @@
 package ru.kjudge.runner_node
 
-import com.sun.jna.Native
-import ru.kjudge.runner_node.native.Launcher
-
+import ru.kjudge.runner_node.entity.Compiler
+import ru.kjudge.runner_node.entity.Limits
+import ru.kjudge.runner_node.entity.Solution
+import ru.kjudge.runner_node.entity.Test
+import ru.kjudge.runner_node.launcher.JavaImplSolutionLauncher
+import ru.kjudge.runner_node.launcher.SolutionLauncher
 
 fun main(args: Array<String>) {
-    val lib = Native.loadLibrary("kjudge_core", Launcher::class.java)
-    println(lib.create_test_dir("/tmp"))
+    val compiler = Compiler(name = "GCC", description = "desc",
+            command = "/usr/bin/gcc -O3 #INPUT -o #OUTPUT", launchCommand = "./#OUTPUT",
+            sourceCodeFileNameExtension = "cpp")
+    val code = """
+        #include <stdio.h>
+        int main() {
+            while(1) {
+                printf("Lol, kek, cheburek\n");
+            }
+            return 0;
+        }
+    """.trimIndent()
+    val solutionLauncher: SolutionLauncher = JavaImplSolutionLauncher(Solution(code, compiler))
+    val compileResult = solutionLauncher.compile()
+    if (compileResult.exitCode == 0) {
+        println("Successfully compiled! Running...")
+        solutionLauncher.run(Test("", Limits(1000, 100, 1024)))
+    }
 }
 
