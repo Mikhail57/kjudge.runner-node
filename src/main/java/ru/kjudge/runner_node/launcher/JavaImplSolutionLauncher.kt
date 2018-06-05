@@ -47,6 +47,8 @@ class JavaImplSolutionLauncher(private val solution: Solution) : SolutionLaunche
 
     override fun clear(): Boolean = Files.deleteIfExists(tempDir)
 
+    override fun getSolutionDir(): Path = tempDir
+
 
     private fun createTempDir(): Path = Files.createTempDirectory(PREFIX).also(::println)
 

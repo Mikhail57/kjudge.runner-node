@@ -2,6 +2,7 @@ package ru.kjudge.runner_node.launcher
 
 import ru.kjudge.runner_node.entity.LaunchResult
 import ru.kjudge.runner_node.entity.Test
+import java.nio.file.Path
 
 /**
  * Solution launcher interface. You should create instance of this class every time you want to run user's solution
@@ -30,4 +31,6 @@ interface SolutionLauncher {
      * Delete source file and compiled solution
      */
     fun clear(): Boolean
+
+    fun getSolutionDir(): Path
 }
