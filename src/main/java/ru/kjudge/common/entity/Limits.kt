@@ -1,4 +1,4 @@
-package ru.kjudge.runner_node.entity
+package ru.kjudge.common.entity
 
 data class Limits(
         /**

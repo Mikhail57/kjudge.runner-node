@@ -1,7 +1,7 @@
 package ru.kjudge.runner_node.launcher
 
-import ru.kjudge.runner_node.entity.LaunchResult
-import ru.kjudge.runner_node.entity.Test
+import ru.kjudge.common.entity.LaunchResult
+import ru.kjudge.common.entity.Test
 import java.nio.file.Path
 
 /**

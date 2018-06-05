@@ -1,6 +1,6 @@
-package ru.kjudge.runner_node.data
+package ru.kjudge.common.entity
 
-import ru.kjudge.runner_node.entity.LaunchResult
+import ru.kjudge.common.entity.LaunchResult
 
 data class RunResult(
         val status: String,

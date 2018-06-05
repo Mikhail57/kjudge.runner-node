@@ -1,6 +1,6 @@
-package ru.kjudge.runner_node.data
+package ru.kjudge.common.entity
 
-import ru.kjudge.runner_node.entity.Test
+import ru.kjudge.common.entity.Test
 
 data class Message(
         val runId: Long,

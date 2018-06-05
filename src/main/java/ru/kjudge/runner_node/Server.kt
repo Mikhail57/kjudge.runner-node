@@ -4,10 +4,9 @@ import org.slf4j.Logger
 import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.messaging.handler.annotation.Payload
 import org.springframework.stereotype.Service
-import ru.kjudge.runner_node.data.Message
-import ru.kjudge.runner_node.data.RunResult
+import ru.kjudge.common.entity.Message
+import ru.kjudge.common.entity.RunResult
 import ru.kjudge.runner_node.entity.Compiler
 import ru.kjudge.runner_node.entity.Solution
 import ru.kjudge.runner_node.launcher.JavaImplSolutionLauncher
