@@ -4,6 +4,7 @@ import org.slf4j.Logger
 import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.messaging.handler.annotation.Payload
 import org.springframework.stereotype.Service
 import ru.kjudge.runner_node.data.Message
 import ru.kjudge.runner_node.data.RunResult
@@ -23,6 +24,7 @@ class Server {
     fun run(message: Message): RunResult {
         log.info("New task ${message.runId}...")
 
+        // Trying to find compiler in the list, otherwise returning error to the caller and logging this incident
         val compiler = compilers.firstOrNull { it.shortName == message.compilerName }
                 ?: return RunResult("Compiler not found", 201, emptyList())
                         .also { log.error("Compiler '${message.compilerName}' for run id ${message.runId} is not found!") }
@@ -39,7 +41,8 @@ class Server {
             return RunResult("Compilation error", 301, listOf(compileResult))
         }
 
+        log.info("Compilation success for ${message.runId}")
         val testsResult = solutionLauncher.runAll(message.tests)
-        return RunResult("Success", 101, testsResult)
+        return RunResult("Success", 101, testsResult).also { log.info("Result: $it") }
     }
 }

@@ -50,7 +50,7 @@ class JavaImplSolutionLauncher(private val solution: Solution) : SolutionLaunche
     override fun getSolutionDir(): Path = tempDir
 
 
-    private fun createTempDir(): Path = Files.createTempDirectory(PREFIX).also(::println)
+    private fun createTempDir(): Path = Files.createTempDirectory(PREFIX)
 
     private fun launch(commands: List<String>, limits: Limits, input: String?, inputFileName: String = "input",
                        outputFileName: String = "output", errorFileName: String = "error"): LaunchResult {
