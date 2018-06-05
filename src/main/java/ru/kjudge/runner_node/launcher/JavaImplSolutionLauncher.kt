@@ -60,6 +60,8 @@ class JavaImplSolutionLauncher(private val solution: Solution) : SolutionLaunche
         val processBuilder = ProcessBuilder()
         processBuilder.command(commands)
 
+        if (tempDir.resolve(inputFileName).toFile().exists())
+            tempDir.resolve(inputFileName).toFile().delete()
         val inputFile = Files.createFile(tempDir.resolve(inputFileName)).toFile()
         val outputFile = tempDir.resolve(outputFileName).toFile()
         val errorFile = tempDir.resolve(errorFileName).toFile()
