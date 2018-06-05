@@ -40,6 +40,6 @@ class Server {
         }
 
         val testsResult = solutionLauncher.runAll(message.tests)
-        return RunResult("Compilation success", 101, testsResult)
+        return RunResult("Success", 101, testsResult)
     }
 }

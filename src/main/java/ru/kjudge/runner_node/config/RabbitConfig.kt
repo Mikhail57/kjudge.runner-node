@@ -1,24 +1,23 @@
 package ru.kjudge.runner_node.config
 
 import org.springframework.amqp.core.Binding
-import org.springframework.context.annotation.Configuration
 import org.springframework.amqp.core.BindingBuilder
 import org.springframework.amqp.core.DirectExchange
 import org.springframework.amqp.core.Queue
 import org.springframework.context.annotation.Bean
-import ru.kjudge.runner_node.entity.Compiler
-
+import org.springframework.context.annotation.Configuration
+import ru.kjudge.runner_node.Server
 
 @Configuration
-class Config {
+class RabbitConfig {
     @Bean
     fun queue(): Queue {
-        return Queue("tut.rpc.requests")
+        return Queue("kjudge.runner.requests")
     }
 
     @Bean
     fun exchange(): DirectExchange {
-        return DirectExchange("tut.rpc")
+        return DirectExchange("kjudge.runner")
     }
 
     @Bean
@@ -27,12 +26,5 @@ class Config {
     }
 
     @Bean
-    fun availableCompilers(): List<Compiler> {
-        return listOf(
-                Compiler(name = "GCC", shortName = "gcc", description = "GNU C Compiler",
-                        command = "gcc -O3 #INPUT -o #OUTPUT", launchCommand = "./#OUTPUT",
-                        sourceCodeFileNameExtension = "cpp")
-        )
-    }
-
+    fun server() = Server()
 }
