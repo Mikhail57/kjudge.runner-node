@@ -13,24 +13,6 @@ import ru.kjudge.runner_node.launcher.SolutionLauncher
 class RunnerNodeApplication
 
 fun main(args: Array<String>) {
-//    val compiler = Compiler(name = "GCC", description = "desc",
-//            command = "/usr/bin/gcc -O3 #INPUT -o #OUTPUT", launchCommand = "./#OUTPUT",
-//            sourceCodeFileNameExtension = "cpp")
-//    val code = """
-//        #include <stdio.h>
-//        int main() {
-//            while(1) {
-//                printf("Lol, kek, cheburek\n");
-//            }
-//            return 0;
-//        }
-//    """.trimIndent()
-//    val solutionLauncher: SolutionLauncher = JavaImplSolutionLauncher(Solution(code, compiler))
-//    val compileResult = solutionLauncher.compile()
-//    if (compileResult.exitCode == 0) {
-//        println("Successfully compiled! Running...")
-//        solutionLauncher.run(Test("", Limits(1000, 100, 1024)))
-//    }
     runApplication<RunnerNodeApplication>(*args)
 }
 

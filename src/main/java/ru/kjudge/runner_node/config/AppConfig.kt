@@ -1,12 +1,7 @@
 package ru.kjudge.runner_node.config
 
-import org.springframework.amqp.core.Binding
 import org.springframework.context.annotation.Configuration
-import org.springframework.amqp.core.BindingBuilder
-import org.springframework.amqp.core.DirectExchange
-import org.springframework.amqp.core.Queue
 import org.springframework.context.annotation.Bean
-import ru.kjudge.runner_node.Server
 import ru.kjudge.runner_node.entity.Compiler
 
 

@@ -29,7 +29,7 @@ class Server {
 
         log.info("Trying to compile ${message.runId}")
         val solution = Solution(message.code, compiler)
-        val solutionLauncher = JavaImplSolutionLauncher(solution)
+        val solutionLauncher: SolutionLauncher = JavaImplSolutionLauncher(solution)
 
         log.info("New folder created for solution ${message.runId}: ${solutionLauncher.getSolutionDir()}")
 
